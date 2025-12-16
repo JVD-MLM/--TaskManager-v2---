@@ -38,8 +38,7 @@ public class UpdateUserRequestHandler : IRequestHandler<UpdateUserRequest, ApiRe
 
         var todo = await _userRepository.GetAsync(request.Id, cancellationToken);
 
-        todo.Update(request.IsAdmin, request.FirstName, request.LastName, request.IsBlocked,
-            request.IsActive, request.Gender);
+        todo.Update(request.FirstName, request.LastName, request.Gender);
 
         await _userRepository.UpdateAsync(todo, cancellationToken);
 

@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using TaskManager.Domain.Enums;
 
 namespace TaskManager.Domain.Entities.Identity;
@@ -10,24 +9,14 @@ namespace TaskManager.Domain.Entities.Identity;
 public class ApplicationUser : IdentityUser<Guid>
 {
     /// <summary>
-    ///     ادمین
-    /// </summary>
-    public bool IsAdmin { get; set; }
-
-    /// <summary>
     ///     نام
     /// </summary>
-    public string? FirstName { get; set; }
+    public string FirstName { get; set; }
 
     /// <summary>
     ///     نام خانوادگی
     /// </summary>
-    public string? LastName { get; set; }
-
-    /// <summary>
-    ///     حذف شده / نشده
-    /// </summary>
-    public bool IsDeleted { get; protected set; }
+    public string LastName { get; set; }
 
     /// <summary>
     ///     تاریخ ایجاد
@@ -50,16 +39,6 @@ public class ApplicationUser : IdentityUser<Guid>
     public Guid? ModifiedBy { get; set; }
 
     /// <summary>
-    ///     بلاک شده / نشده
-    /// </summary>
-    public bool IsBlocked { get; set; }
-
-    /// <summary>
-    ///     کد فعال سازی موبایل
-    /// </summary>
-    public string? MobileActiveCode { get; set; }
-
-    /// <summary>
     ///     فعال / غیر فعال
     /// </summary>
     public bool IsActive { get; set; }
@@ -69,28 +48,32 @@ public class ApplicationUser : IdentityUser<Guid>
     /// </summary>
     public UserGender Gender { get; set; }
 
+    /// <summary>
+    ///     کد ملی
+    /// </summary>
+    public string NationalCode { get; set; }
+
+    /// <summary>
+    /// واحد
+    /// </summary>
+    public int SectionId { get; set; }
+
+    /// <summary>
+    /// پست
+    /// </summary>
+    public int PostId { get; set; }
+
     #region Methods
 
     /// <summary>
     ///     متد آپدیت
     /// </summary>
-    public void Update(bool isAdmin, string? firstName, string? lastName, bool isBlocked,
-        bool isActive, UserGender gender)
+    public void Update(string? firstName, string? lastName, UserGender gender)
     {
         FirstName = firstName;
         LastName = lastName;
-        IsAdmin = isAdmin;
         LastName = lastName;
-        IsActive = isActive;
         Gender = gender;
-    }
-
-    /// <summary>
-    ///     متد حذف
-    /// </summary>
-    public void BlockUser()
-    {
-        IsBlocked = true;
     }
 
     #endregion

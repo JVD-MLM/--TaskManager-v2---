@@ -30,10 +30,13 @@ public static class SeedData
 
         var adminUser = new ApplicationUser
         {
-            UserName = "admin@example.com",
-            Email = "admin@example.com",
-            EmailConfirmed = true,
-            IsAdmin = true
+            IsActive = true,
+            Gender = UserGender.Male,
+            NationalCode = "0000000000",
+            UserName = "Admin",
+            FirstName = "Admin",
+            LastName = "Admin",
+            Email = "admin@rayan.com"
         };
 
         var adminPassword = "Admin123!";
@@ -43,7 +46,7 @@ public static class SeedData
         if (user == null)
         {
             var createAdmin = await userManager.CreateAsync(adminUser, adminPassword);
-            if (createAdmin.Succeeded) await userManager.AddToRoleAsync(adminUser, "Admin");
+            if (createAdmin.Succeeded) await userManager.AddToRoleAsync(adminUser, UserRole.Admin.GetName());
         }
     }
 }

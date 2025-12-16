@@ -26,6 +26,8 @@
 
   <ItemGroup>
     <Folder Include="EntitiesConfigurations\Identity\" />
+    <Folder Include="EntitiesConfigurations\Log\" />
+    <Folder Include="EntitiesConfigurations\Post\" />
   </ItemGroup>
 
 </Project>

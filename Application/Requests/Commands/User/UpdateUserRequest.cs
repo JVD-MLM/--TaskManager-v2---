@@ -16,11 +16,6 @@ public class UpdateUserRequest : IRequest<ApiResponse<UpdateUserRequestResponse>
     public Guid Id { get; set; }
 
     /// <summary>
-    ///     ادمین
-    /// </summary>
-    public bool IsAdmin { get; set; }
-
-    /// <summary>
     ///     نام
     /// </summary>
     public string? FirstName { get; set; }
@@ -29,16 +24,6 @@ public class UpdateUserRequest : IRequest<ApiResponse<UpdateUserRequestResponse>
     ///     نام خانوادگی
     /// </summary>
     public string? LastName { get; set; }
-
-    /// <summary>
-    ///     بلاک شده / نشده
-    /// </summary>
-    public bool IsBlocked { get; set; }
-
-    /// <summary>
-    ///     فعال / غیر فعال
-    /// </summary>
-    public bool IsActive { get; set; }
 
     /// <summary>
     ///     جنسیت

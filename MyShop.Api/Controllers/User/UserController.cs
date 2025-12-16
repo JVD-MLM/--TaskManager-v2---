@@ -73,12 +73,9 @@ public class UserController : ControllerBase
         var response = await _mediator.Send(new UpdateUserRequest
         {
             Id = request.Id,
-            IsAdmin = request.IsAdmin,
             LastName = request.LastName,
             FirstName = request.FirstName,
-            Gender = request.Gender,
-            IsActive = request.IsActive,
-            IsBlocked = request.IsBlocked
+            Gender = request.Gender
         });
 
         if (response.Status.HasError) return BadRequest(response);

@@ -1,10 +1,15 @@
-﻿using System.Reflection;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 using TaskManager.Application.IServices;
 using TaskManager.Domain.BaseEntities;
 using TaskManager.Domain.Entities.Identity;
 using TaskManager.Domain.Entities.Jwt;
+using TaskManager.Domain.Entities.Log;
+using TaskManager.Domain.Entities.Message;
+using TaskManager.Domain.Entities.Post;
+using TaskManager.Domain.Entities.Section;
+using TaskManager.Domain.Entities.Todo;
 
 namespace TaskManager.Infrastructure;
 
@@ -15,7 +20,8 @@ public class TaskManagerDbContext : IdentityDbContext<ApplicationUser, Applicati
 {
     private readonly ICurrentUserService _currentUser; // استفاده بجای authService برای حل مشکل Circular Dependency
 
-    public TaskManagerDbContext(DbContextOptions<TaskManagerDbContext> options) : base(options) // كانستراكتور براي فكتوري
+    public TaskManagerDbContext(DbContextOptions<TaskManagerDbContext> options) :
+        base(options) // كانستراكتور براي فكتوري
     {
     }
 
@@ -72,7 +78,17 @@ public class TaskManagerDbContext : IdentityDbContext<ApplicationUser, Applicati
     #region Tables
 
     public DbSet<ApplicationUser> Users { get; set; }
+    public DbSet<ApplicationRole> Roles { get; set; }
     public DbSet<RevokedToken> RevokedTokens { get; set; }
+    public DbSet<Todo> Todos { get; set; }
+    public DbSet<TodoType> TodoTypes { get; set; }
+    public DbSet<TodoAssignment> TodoAssignments { get; set; }
+    public DbSet<TodoStatus> TodoStatuses { get; set; }
+    public DbSet<Post> Posts { get; set; }
+    public DbSet<Section> Sections { get; set; }
+    public DbSet<MessageGroup> MessageGroups { get; set; }
+    public DbSet<SystemLog> SystemLogs { get; set; }
+    public DbSet<AuditLog> AuditLogs { get; set; }
 
     #endregion
 
