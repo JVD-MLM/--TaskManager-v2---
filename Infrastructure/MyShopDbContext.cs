@@ -1,12 +1,13 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using System.Reflection;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection;
 using TaskManager.Application.IServices;
 using TaskManager.Domain.BaseEntities;
 using TaskManager.Domain.Entities.Identity;
 using TaskManager.Domain.Entities.Jwt;
 using TaskManager.Domain.Entities.Log;
 using TaskManager.Domain.Entities.Message;
+using TaskManager.Domain.Entities.Notification;
 using TaskManager.Domain.Entities.Post;
 using TaskManager.Domain.Entities.Section;
 using TaskManager.Domain.Entities.Todo;
@@ -89,6 +90,13 @@ public class TaskManagerDbContext : IdentityDbContext<ApplicationUser, Applicati
     public DbSet<MessageGroup> MessageGroups { get; set; }
     public DbSet<SystemLog> SystemLogs { get; set; }
     public DbSet<AuditLog> AuditLogs { get; set; }
+    public DbSet<MessageGroupMember> MessageGroupMembers { get; set; }
+    public DbSet<MessageRecipient> MessageRecipients { get; set; }
+    public DbSet<Message> Messages { get; set; }
+    public DbSet<Notification> Notification { get; set; }
+    public DbSet<UserNotificationSetting> NotificationSettings { get; set; }
+    public DbSet<TodoAttachment> TodoAttachments { get; set; }
+    public DbSet<TodoComment> TodoComments { get; set; }
 
     #endregion
 
