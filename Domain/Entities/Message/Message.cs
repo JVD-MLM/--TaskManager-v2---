@@ -1,4 +1,5 @@
 ﻿using TaskManager.Domain.BaseEntities;
+using TaskManager.Domain.Entities.Identity;
 
 namespace TaskManager.Domain.Entities.Message;
 
@@ -26,4 +27,16 @@ public class Message : BaseEntity<int>
     /// پاسخ به پیام
     /// </summary>
     public int ReplyToMessage { get; set; }
+
+
+
+
+    #region Relations
+
+    public ICollection<MessageRecipient> MessageRecipients { get; set; }
+    public ApplicationUser User { get; set; }
+    public Message ReplyTo { get; set; }
+    public ICollection<Message> Childs { get; set; }
+
+    #endregion
 }

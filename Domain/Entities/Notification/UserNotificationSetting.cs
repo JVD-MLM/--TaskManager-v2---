@@ -1,4 +1,5 @@
 ﻿using TaskManager.Domain.BaseEntities;
+using TaskManager.Domain.Entities.Identity;
 
 namespace TaskManager.Domain.Entities.Notification;
 
@@ -12,4 +13,14 @@ public class UserNotificationSetting:BaseEntity<int>
     public bool NotifyOnTaskComment { get; set; }
     public bool NotifyOnMessageReceived { get; set; }
     public string? PreferredChannel { get; set; }
+
+
+
+
+
+    #region Relations
+
+    public ApplicationUser? User { get; set; }
+
+    #endregion
 }

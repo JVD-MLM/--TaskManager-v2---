@@ -18,5 +18,9 @@ public class ApplicationUserConfiguration : IEntityTypeConfiguration<Application
         builder.Property(x => x.PhoneNumber).HasMaxLength(11);
         builder.Property(x => x.PostId).HasColumnType("TINYINT");
         builder.Property(x => x.SectionId).HasColumnType("TINYINT");
+        builder.HasOne(x => x.Section).WithMany(x => x.Users).HasForeignKey(x => x.SectionId)
+            .OnDelete(DeleteBehavior.NoAction);
+        builder.HasOne(x => x.Post).WithMany(x => x.Users).HasForeignKey(x => x.PostId)
+            .OnDelete(DeleteBehavior.NoAction);
     }
 }

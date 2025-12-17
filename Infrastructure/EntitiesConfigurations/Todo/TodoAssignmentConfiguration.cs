@@ -12,5 +12,9 @@ public class TodoAssignmentConfiguration : IEntityTypeConfiguration<TodoAssignme
     public void Configure(EntityTypeBuilder<TodoAssignment> builder)
     {
         builder.Property(x => x.StatusId).HasColumnType("TINYINT");
+        builder.HasOne(x => x.Todo).WithMany(x => x.TodoAssignments).HasForeignKey(x => x.TodoId).OnDelete(DeleteBehavior.NoAction);
+        builder.HasOne(x => x.TodoStatus).WithMany(x => x.TodoAssignments).HasForeignKey(x => x.StatusId).OnDelete(DeleteBehavior.NoAction);
+        builder.HasOne(x => x.ApplicationUserBy).WithMany(x => x.TodoAssignmentsBy).HasForeignKey(x => x.AssignedBy).OnDelete(DeleteBehavior.NoAction);
+        builder.HasOne(x => x.ApplicationUserTo).WithMany(x => x.TodoAssignmentsTo).HasForeignKey(x => x.AssignedTo).OnDelete(DeleteBehavior.NoAction);
     }
 }

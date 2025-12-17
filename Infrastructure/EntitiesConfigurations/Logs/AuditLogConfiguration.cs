@@ -13,5 +13,7 @@ public class AuditLogConfiguration:IEntityTypeConfiguration<AuditLog>
     {
         builder.Property(x => x.EntityName).HasMaxLength(100);
         builder.Property(x => x.ActionType).HasMaxLength(100);
+        builder.HasOne(x => x.User).WithMany(x => x.AuditLogs).HasForeignKey(x => x.PerformedBy)
+            .OnDelete(DeleteBehavior.NoAction);
     }
 }

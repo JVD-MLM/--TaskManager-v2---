@@ -16,4 +16,15 @@ public class TodoStatus : BaseEntity<int>
     ///     اولویت
     /// </summary>
     public int? OrderIndex { get; set; }
+
+
+
+
+
+    #region Relations
+
+    public ICollection<Todo> Todos { get; set; }
+    public ICollection<TodoAssignment> TodoAssignments { get; set; }
+
+    #endregion
 }

@@ -11,4 +11,13 @@ public class MessageGroup : BaseEntity<int>
     ///     عنوان
     /// </summary>
     public string Title { get; set; }
+
+
+
+
+    #region Relations
+
+    public ICollection<MessageGroupMember> MessageGroupMembers { get; set; }
+
+    #endregion
 }

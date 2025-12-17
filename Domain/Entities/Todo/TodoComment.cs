@@ -1,4 +1,5 @@
 ﻿using TaskManager.Domain.BaseEntities;
+using TaskManager.Domain.Entities.Identity;
 
 namespace TaskManager.Domain.Entities.Todo;
 
@@ -21,4 +22,14 @@ public class TodoComment:BaseEntity<int>
     /// بدنه کامنت
     /// </summary>
     public string Body { get; set; }
+
+
+
+
+    #region Relations
+
+    public Todo Todo { get; set; }
+    public ApplicationUser User { get; set; }
+
+    #endregion
 }

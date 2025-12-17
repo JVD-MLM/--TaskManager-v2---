@@ -48,10 +48,23 @@ public class Todo : BaseEntity<int>
     /// <summary>
     ///     تسک والد
     /// </summary>
-    public int ParentTodoId { get; set; }
+    public int? ParentTodoId { get; set; }
 
     /// <summary>
-    /// اولویت
+    ///     اولویت
     /// </summary>
     public Priority Priority { get; set; }
+
+
+    #region Relations
+
+    public TodoType TodoType { get; set; }
+    public TodoStatus TodoStatus { get; set; }
+    public ICollection<TodoAssignment> TodoAssignments { get; set; }
+    public Todo? ParentTodo { get; set; }
+    public ICollection<Todo>? Childs { get; set; }
+    public ICollection<TodoAttachment>? TodoAttachments { get; set; }
+    public ICollection<TodoComment>? TodoComments { get; set; }
+
+    #endregion
 }

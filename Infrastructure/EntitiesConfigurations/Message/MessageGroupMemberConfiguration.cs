@@ -11,5 +11,9 @@ public class MessageGroupMemberConfiguration : IEntityTypeConfiguration<MessageG
 {
     public void Configure(EntityTypeBuilder<MessageGroupMember> builder)
     {
+        builder.HasOne(x => x.MessageGroup).WithMany(x => x.MessageGroupMembers).HasForeignKey(x => x.MessageGroupId)
+            .OnDelete(DeleteBehavior.NoAction);
+        builder.HasOne(x => x.User).WithMany(x => x.MessageGroupMembers).HasForeignKey(x => x.UserId)
+            .OnDelete(DeleteBehavior.NoAction);
     }
 }

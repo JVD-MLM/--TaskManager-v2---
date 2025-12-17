@@ -14,5 +14,9 @@ public class PostConfiguration : IEntityTypeConfiguration<Domain.Entities.Post.P
         builder.Property(x => x.Id).HasColumnType("TINYINT");
         builder.Property(x => x.SectionId).HasColumnType("TINYINT");
         builder.Property(x => x.ParentPostId).HasColumnType("TINYINT");
+        builder.HasOne(x => x.Section).WithMany(x => x.Posts).HasForeignKey(x => x.SectionId)
+            .OnDelete(DeleteBehavior.NoAction);
+        builder.HasOne(x => x.Paretnt).WithMany(x => x.Childs).HasForeignKey(x => x.ParentPostId)
+            .OnDelete(DeleteBehavior.NoAction);
     }
 }

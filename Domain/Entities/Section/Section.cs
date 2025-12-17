@@ -1,4 +1,5 @@
 ﻿using TaskManager.Domain.BaseEntities;
+using TaskManager.Domain.Entities.Identity;
 
 namespace TaskManager.Domain.Entities.Section;
 
@@ -15,5 +16,15 @@ public class Section : BaseEntity<int>
     /// <summary>
     ///     واحد والد
     /// </summary>
-    public int ParentSectionId { get; set; }
+    public int? ParentSectionId { get; set; }
+
+
+    #region Relations
+
+    public Section? Parent { get; set; }
+    public ICollection<Section>? Childs { get; set; }
+    public ICollection<Post.Post> Posts { get; set; }
+    public ICollection<ApplicationUser> Users { get; set; }
+
+    #endregion
 }

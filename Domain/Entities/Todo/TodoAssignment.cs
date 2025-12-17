@@ -1,4 +1,5 @@
 ﻿using TaskManager.Domain.BaseEntities;
+using TaskManager.Domain.Entities.Identity;
 
 namespace TaskManager.Domain.Entities.Todo;
 
@@ -46,4 +47,16 @@ public class TodoAssignment : BaseEntity<int>
     ///     فعال / غیر فعال
     /// </summary>
     public bool IsActive { get; set; }
+
+
+
+
+    #region Relations
+
+    public Todo Todo { get; set; }
+    public TodoStatus TodoStatus { get; set; }
+    public ApplicationUser ApplicationUserBy { get; set; }
+    public ApplicationUser ApplicationUserTo { get; set; }
+
+    #endregion
 }

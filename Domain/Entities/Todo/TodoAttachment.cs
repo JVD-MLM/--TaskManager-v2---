@@ -16,4 +16,13 @@ public class TodoAttachment:BaseEntity<int>
     /// مسیر فایل
     /// </summary>
     public string? FilePath { get; set; }
+
+
+
+
+    #region Relations
+
+    public Todo Todo { get; set; }
+
+    #endregion
 }

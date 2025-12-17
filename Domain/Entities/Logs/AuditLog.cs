@@ -1,4 +1,5 @@
 ﻿using TaskManager.Domain.BaseEntities;
+using TaskManager.Domain.Entities.Identity;
 
 namespace TaskManager.Domain.Entities.Log;
 
@@ -46,4 +47,13 @@ public class AuditLog : BaseEntity<int>
     ///     توضیحات
     /// </summary>
     public string? Description { get; set; }
+
+
+
+
+    #region Relations
+
+    public ApplicationUser? User { get; set; }
+
+    #endregion
 }

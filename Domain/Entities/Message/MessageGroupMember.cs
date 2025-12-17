@@ -1,4 +1,5 @@
 ﻿using TaskManager.Domain.BaseEntities;
+using TaskManager.Domain.Entities.Identity;
 
 namespace TaskManager.Domain.Entities.Message;
 
@@ -21,4 +22,14 @@ public class MessageGroupMember:BaseEntity<int>
     /// تاریخ پیوستن
     /// </summary>
     public DateTime? JoinedAt { get; set; }
+
+
+
+
+    #region Relations
+
+    public MessageGroup MessageGroup { get; set; }
+    public ApplicationUser User { get; set; }
+
+    #endregion
 }

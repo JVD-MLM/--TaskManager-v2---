@@ -13,5 +13,7 @@ public class SectionConfiguration : IEntityTypeConfiguration<Domain.Entities.Sec
         builder.Property(x => x.Title).HasMaxLength(100);
         builder.Property(x => x.Id).HasColumnType("TINYINT");
         builder.Property(x => x.ParentSectionId).HasColumnType("TINYINT");
+        builder.HasOne(x => x.Parent).WithMany(x => x.Childs).HasForeignKey(x => x.ParentSectionId)
+            .OnDelete(DeleteBehavior.NoAction);
     }
 }

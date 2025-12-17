@@ -12,5 +12,7 @@ public class UserNotificationSettingConfiguration:IEntityTypeConfiguration<UserN
     public void Configure(EntityTypeBuilder<UserNotificationSetting> builder)
     {
         builder.Property(x => x.PreferredChannel).HasMaxLength(20);
+        builder.HasOne(x => x.User).WithMany(x => x.UserNotificationSettings).HasForeignKey(x => x.UserId)
+            .OnDelete(DeleteBehavior.NoAction);
     }
 }

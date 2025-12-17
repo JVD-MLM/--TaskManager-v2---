@@ -16,4 +16,13 @@ public class TodoType : BaseEntity<int>
     ///     توضیحات
     /// </summary>
     public string? Description { get; set; }
+
+
+
+
+    #region Relations
+
+    public ICollection<Todo> Todos { get; set; }
+
+    #endregion
 }

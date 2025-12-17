@@ -1,4 +1,5 @@
 ﻿using TaskManager.Domain.BaseEntities;
+using TaskManager.Domain.Entities.Identity;
 
 namespace TaskManager.Domain.Entities.Notification;
 
@@ -46,4 +47,13 @@ public class Notification:BaseEntity<int>
     /// تاریخ خواندن
     /// </summary>
     public DateTime ReadAt { get; set; }
+
+
+
+
+    #region Relations
+
+    public ApplicationUser? User { get; set; }
+
+    #endregion
 }

@@ -11,5 +11,9 @@ public class MessageConfiguration:IEntityTypeConfiguration<Domain.Entities.Messa
     public void Configure(EntityTypeBuilder<Domain.Entities.Message.Message> builder)
     {
         builder.Property(x => x.Subject).HasMaxLength(150);
+        builder.HasOne(x => x.User).WithMany(x => x.Messages).HasForeignKey(x => x.SenderId)
+            .OnDelete(DeleteBehavior.NoAction);
+        builder.HasOne(x => x.ReplyTo).WithMany(x => x.Childs).HasForeignKey(x => x.ReplyToMessage)
+            .OnDelete(DeleteBehavior.NoAction);
     }
 }

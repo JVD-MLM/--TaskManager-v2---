@@ -12,5 +12,7 @@ public class TodoAttachmentConfiguration:IEntityTypeConfiguration<TodoAttachment
     public void Configure(EntityTypeBuilder<TodoAttachment> builder)
     {
         builder.Property(x => x.FilePath).HasMaxLength(256);
+        builder.HasOne(x => x.Todo).WithMany(x => x.TodoAttachments).HasForeignKey(x => x.TodoId)
+            .OnDelete(DeleteBehavior.NoAction);
     }
 }

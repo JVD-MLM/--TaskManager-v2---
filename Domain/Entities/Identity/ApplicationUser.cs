@@ -1,4 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using TaskManager.Domain.Entities.Log;
+using TaskManager.Domain.Entities.Message;
+using TaskManager.Domain.Entities.Notification;
+using TaskManager.Domain.Entities.Todo;
 using TaskManager.Domain.Enums;
 
 namespace TaskManager.Domain.Entities.Identity;
@@ -63,6 +67,9 @@ public class ApplicationUser : IdentityUser<Guid>
     /// </summary>
     public int PostId { get; set; }
 
+
+
+
     #region Methods
 
     /// <summary>
@@ -75,6 +82,25 @@ public class ApplicationUser : IdentityUser<Guid>
         LastName = lastName;
         Gender = gender;
     }
+
+    #endregion
+
+
+
+
+    #region Relations
+
+    public ICollection<TodoAssignment> TodoAssignmentsTo { get; set; }
+    public ICollection<TodoAssignment> TodoAssignmentsBy { get; set; }
+    public Section.Section Section { get; set; }
+    public Post.Post Post { get; set; }
+    public ICollection<AuditLog>? AuditLogs { get; set; }
+    public ICollection<MessageGroupMember>? MessageGroupMembers { get; set; }
+    public ICollection<MessageRecipient> MessageRecipients { get; set; }
+    public ICollection<UserNotificationSetting>? UserNotificationSettings { get; set; }
+    public ICollection<Message.Message>? Messages { get; set; }
+    public ICollection<Notification.Notification>? Notifications { get; set; }
+    public ICollection<TodoComment>? TodoComments { get; set; }
 
     #endregion
 }
