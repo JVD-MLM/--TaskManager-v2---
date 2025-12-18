@@ -60,12 +60,12 @@ public class ApplicationUser : IdentityUser<Guid>
     /// <summary>
     /// واحد
     /// </summary>
-    public int SectionId { get; set; }
+    public int? SectionId { get; set; }
 
     /// <summary>
     /// پست
     /// </summary>
-    public int PostId { get; set; }
+    public int? PostId { get; set; }
 
 
 
@@ -92,8 +92,8 @@ public class ApplicationUser : IdentityUser<Guid>
 
     public ICollection<TodoAssignment> TodoAssignmentsTo { get; set; }
     public ICollection<TodoAssignment> TodoAssignmentsBy { get; set; }
-    public Section.Section Section { get; set; }
-    public Post.Post Post { get; set; }
+    public Section.Section? Section { get; set; }
+    public Post.Post? Post { get; set; }
     public ICollection<AuditLog>? AuditLogs { get; set; }
     public ICollection<MessageGroupMember>? MessageGroupMembers { get; set; }
     public ICollection<MessageRecipient> MessageRecipients { get; set; }

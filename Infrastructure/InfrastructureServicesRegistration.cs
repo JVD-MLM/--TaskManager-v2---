@@ -15,5 +15,6 @@ public static class InfrastructureServicesRegistration
     {
         services.AddScoped<IJwtRepository, JwtRepository>();
         services.AddScoped<IAuthService, AuthService>();
+        services.AddScoped<IUserRepository, UserRepository>();
     }
 }
